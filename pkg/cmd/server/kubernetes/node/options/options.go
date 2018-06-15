@@ -83,6 +83,8 @@ func ComputeKubeletFlags(startingArgs map[string][]string, options configapi.Nod
 	setIfUnset(args, "authorization-mode", "Webhook")
 	setIfUnset(args, "authorization-webhook-cache-authorized-ttl", options.AuthConfig.AuthorizationCacheTTL)
 	setIfUnset(args, "authorization-webhook-cache-unauthorized-ttl", options.AuthConfig.AuthorizationCacheTTL)
+	setIfUnset(args, "kube-api-qps", "100")
+	setIfUnset(args, "kube-api-burst", "200")
 
 	// Override kubelet iptables-masquerade-bit value to match overridden kube-proxy
 	// iptables-masquerade-bit value, UNLESS the user has overridden kube-proxy to match the
